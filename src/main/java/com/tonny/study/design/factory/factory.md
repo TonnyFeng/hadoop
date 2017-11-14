@@ -14,10 +14,7 @@ GOF在《设计模式〉中将工厂模式分为两类：工厂方法模式(Fact
 使用场景：负责创建的对象比较少；客户只知道传入工厂类的参数，对于如何创建对象的逻辑不关心；容易违反高内聚责任分配原则，所以只在很简单的情况下应用；
 
 类图:
-
-[类图]:http://images.cnblogs.com/cnblogs_com/itteacher/Simple_Factory.jpg
-![类图] 
- 
+![类图](./Simple_Factory.jpg) 
 实例：
 //抽象产品角色
 public interface IProduct
@@ -76,7 +73,7 @@ public class Creator
 对于某个产品，调用者清楚知道应该使用哪个具体工厂服务，实例化该具体工厂，生产出具体的产品来；
 只是需要一种产品，对于那个工厂生产的并不关心，最终选用哪个具体工厂由生产者一方决定，它根据当前系统的情况来实例化一个具体的工厂返回给使用者，这个决策过程对于使用者来说是透明的。
 
-类图: ![类图2](http://images.cnblogs.com/cnblogs_com/itteacher/Factory_Method.jpg.gif)
+类图: ![类图2](./Factory_Method.jpg.gif)
 
 实例：
 //抽象工厂
@@ -132,7 +129,7 @@ public class Client{
 3. 抽象工厂模式（Abstract Factory)
 抽象工厂模式是指当有多个抽象角色时，使用的一种工厂模式。抽象工厂模式可以向客户端提供一个接口，使客户端在不必指定产品的具体情况下，创建多个产品族中的产品对象。
 
-类图: ![类图3](http://images.cnblogs.com/cnblogs_com/itteacher/AbstractFactory.JPG)
+类图: ![类图3](./AbstractFactory.JPG)
  
 
 实例：
