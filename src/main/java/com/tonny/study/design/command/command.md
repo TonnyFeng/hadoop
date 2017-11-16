@@ -13,75 +13,76 @@
 * Client: 创建具体的命令对象，并且设置命令对象的接收者。注意这个不是我们常规意义上的客户端，而是在组装命令对象和接收者，也可以称为装配者，真正使用命令的客户端是从Invoker来触发执行。
 
 实例：
-> public class Receiver
->{
->    public void action()
->    {
->        System.out.println("Receive something, run action");
->    }
->}
+```
+ public class Receiver
+{
+    public void action()
+    {
+        System.out.println("Receive something, run action");
+    }
+}
 
->public interface Command
->{
->    public void execute();
->}
+public interface Command
+{
+    public void execute();
+}
 
->public class ConcreteCommand implements Command
->{
->    private Receiver receive = null;
->
->　 private String status;
->
->    public ConcreteCommand(final Receiver receive)
->    {
->        this.receive = receive;
->    }
->
->    @Override
->    public void execute()
->    {
->        this.receive.action();
->    }
->
->}
->
->public class Invoker
->{
->    private Command command = null;
->
->    public Command getCommand()
->    {
->        return command;
->    }
->
->    public void setCommand(final Command command)
->    {
->        this.command = command;
->    }
->
->    public void runCommand()
->    {
->        this.command.execute();
->    }
->}
->
->public class Client
->{
->    public static void assemble()
->    {
->        final Receiver receiver = new Receiver();
->        final Command command = new ConcreteCommand(receiver);
->        final Invoker invoker = new Invoker();
->        invoker.setCommand(command);
->        invoker.runCommand();
->    }
->
->    public static void main(final String[] args)
->    {
->        assemble();
->    }
->}
+public class ConcreteCommand implements Command
+{
+    private Receiver receive = null;
 
+　 private String status;
+
+    public ConcreteCommand(final Receiver receive)
+    {
+        this.receive = receive;
+    }
+
+    @Override
+    public void execute()
+    {
+        this.receive.action();
+    }
+
+}
+
+public class Invoker
+{
+    private Command command = null;
+
+    public Command getCommand()
+    {
+        return command;
+    }
+
+    public void setCommand(final Command command)
+    {
+        this.command = command;
+    }
+
+    public void runCommand()
+    {
+        this.command.execute();
+    }
+}
+
+public class Client
+{
+    public static void assemble()
+    {
+        final Receiver receiver = new Receiver();
+        final Command command = new ConcreteCommand(receiver);
+        final Invoker invoker = new Invoker();
+        invoker.setCommand(command);
+        invoker.runCommand();
+    }
+
+    public static void main(final String[] args)
+    {
+        assemble();
+    }
+}
+```
 结果：
 * Receive something, run action
 

@@ -4,6 +4,7 @@
 通常Singleton模式有几种形式:
 
 一: 使用全局变量
+```
 //Singleton with final field 
 public class Singleton
 {
@@ -13,9 +14,11 @@ public class Singleton
     
     ...
 }
+```
 在这种方法中，公有静态成员是一个final域（保证了总是包含相同的对象引用）。私有构造函数仅被调用一次，用来实例化公有的静态final域 Singleton.uniqueInstance。由于缺少公有的或者受保护的构造函数，所以保证了Singleton的全局唯一性：一旦 Singleton类被实例化之后，只有一个Singleton实例存在——不多也不少。使用此Singleton类的程序员的任何行为都不能改变这一点。
 
 二: 使用公有的静态工厂方法(又叫饿汉式单例类)
+```
 //Singleton with static factory   
 public class Singleton {   
     private static Singleton uniqueInstance = new Singleton();   
@@ -26,8 +29,9 @@ public class Singleton {
     }   
     //...Remainder omitted   
 }  
-
+```
 三: 延迟实例化的做法,也是公有的静态工厂方法(又叫懒汉式单例类)
+```
 public class Singleton{
     private static Singleton instance = null;
 
@@ -43,10 +47,11 @@ public class Singleton{
         return instance;
     }
 }
-
+```
 懒汉式以时间换取空间,每次获取实例都要判断,浪费时间,但是如果一直没人用,就会节省空间.饿汉式以空间换取时间,当类装载时,创建出一个实例,运行时不需要判断,节省了运行时间
 
 四: 延迟实例化的做法,也是公有的静态工厂方法(又叫懒汉式单例类),并且线程安全
+```
 public class Singleton {   
     private static Singleton uniqueInstance ; 
   
@@ -59,8 +64,10 @@ public class Singleton {
         }   
         return uniqueInstance;   
     }   
-}   
+}  
+```
 五: Sington类的序列化 
+```
 public class Singleton implements Serializable{      
      
     private static final long serialVersionUID = 5765648836796281035L;      
@@ -82,17 +89,18 @@ public class Singleton implements Serializable{
          System.out.println(singleton==singleton2);      
    }       
 }
- 
+``` 
 输出结果为:false
 
 解决方法是为Singleton类增加readResolve()方法：
 
 Java代码
-//readResolve 方法维持了Singleton的单例属性  
+```
+    //readResolve 方法维持了Singleton的单例属性  
     private Object readResolve() throws ObjectStreamException{  
         return uniqueInstance;  
     } 
-
+```
 再进行测试：输出结果为true 
 
 总:

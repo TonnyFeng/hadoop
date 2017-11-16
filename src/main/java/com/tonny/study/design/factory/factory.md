@@ -16,6 +16,7 @@ GOF在《设计模式〉中将工厂模式分为两类：工厂方法模式(Fact
 类图:
 ![类图](./Simple_Factory.jpg) 
 实例：
+```
 //抽象产品角色
 public interface IProduct
 {
@@ -53,7 +54,7 @@ public class Creator
         }
     }
 }
-
+```
 2. 工厂方法模式（Factory Method)
 工厂方法模式是简单工厂方法模式的衍生，它的核心工厂类不再负责产品的创建，这样核心类成为一个抽象工厂角色，仅负责具体工厂子类必须实现的接口，使得系统可以在不修改具体工厂角色的情况下引用新的产品。
 在这个模式中，一个抽象工厂对应一个抽象产品，一个具体工厂对应一个具体产品。
@@ -76,6 +77,7 @@ public class Creator
 类图: ![类图2](./Factory_Method.jpg.gif)
 
 实例：
+```
 //抽象工厂
 public interface Creator{
        public Light factory();
@@ -125,7 +127,7 @@ public class Client{
 
        }
 }
-
+```
 3. 抽象工厂模式（Abstract Factory)
 抽象工厂模式是指当有多个抽象角色时，使用的一种工厂模式。抽象工厂模式可以向客户端提供一个接口，使客户端在不必指定产品的具体情况下，创建多个产品族中的产品对象。
 
@@ -133,6 +135,7 @@ public class Client{
  
 
 实例：
+```
 //抽象工厂角色
 public interface AbstractFactory{
 　　public ProductA createProductA();
@@ -200,3 +203,4 @@ public class ConcreteFactory2 implements Creator{
 　　return new ProductB2();
 　　}
 } 
+```
