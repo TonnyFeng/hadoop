@@ -13,8 +13,8 @@
 * 最终解决方案三，用了策略模式，将Fly和Quack单独出来分别设其接口及一系列需要的实现方法，然后在原本的基类中去除quack和fly方法，加入两个新接口的对象及getter/setter, 并加入两个方法分别为performFly和performQuack.（文章见：http://www.cnblogs.com/justinw/archive/2007/02/06/641414.html ）
 
 ## 类图
-[类图]:.strategy.jpg
-[类图]
+![类图](./strategy.jpg)
+
 
 ## 优点：
 * 提供了一种替代继承的方法，而且既保持了继承的优点（代码重用），还比继承更灵活（算法独立，可以任意扩展）。
